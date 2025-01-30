@@ -12,10 +12,25 @@
             <div class="col-12 mt-2 ml-n2">
                 <img width="500px" src="~/img/globomantics-logo-darkblue.png" style="max-width:100%" />
             </div>
-            </div>
-            <div class="row">
+        </div>
+        <div class="row">
             <div class="col-7 mt-2 mb-2">
                 <span class="text-primary">@ViewBag.Title</span>
+            </div>
+            <div class="col-5">
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <div class="float-end">
+                        <strong>Welcome @User.Identity.Name</strong>
+                        <a asp-action="Logout" asp-controller="Account" class="btn btn-primary">Log out</a>
+                    </div>
+                }
+                else{
+                    <div class="float-end">
+                        <strong>Log in: </strong>
+                        <a asp-action="Login" asp-controller="Account" class="btn btn-primary">Log in</a>
+                    </div>
+                }
             </div>
         </div>
         <div>
